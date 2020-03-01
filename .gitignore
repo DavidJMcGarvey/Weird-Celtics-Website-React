@@ -12,6 +12,7 @@
 /build
 
 # misc
+/private
 .DS_Store
 .env.local
 .env.development.local
