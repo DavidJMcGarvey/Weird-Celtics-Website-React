@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+
+import {
+  BroswerRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
 import './style/App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// Import components
+import Header from './components/Header';
+import Home from './components/Home';
+import SmarfGems from './components/SmarfGems';
+import SmarfGemDetail from './components/SmarfGemDetail';
+import TwitterTalent from './components/TwitterTalent';
+import TwitterTalentDetail from './components/TwitterTalentDetial';
+import UserSignIn from './components/UserSignIn.js';
+import UserSignOut from './components/UserSignOut';
+import UserSignUp from './components/UserSignUp';
 
-export default App;
+
+export default class App extends Component {
+
+  render() {
+    return (
+      // Route handling
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/smarf-gems" component={SmarfGems} />
+          <Route path="/smarf-gems/:id" component={SmarfGemDetail} />
+          <Route path="/twitter-talent" component={TwitterTalent} />
+          <Route path="/twitter-talent/:id" component={TwitterTalentDetail} />
+          <Route path="/signin" component={UserSignIn} />
+          <Route path="/signout" component={UserSignOut} />
+          <Route path="/signup" component={UserSignUp} />
+        </Switch>
+      </Router>
+    )
+
+  }
+}

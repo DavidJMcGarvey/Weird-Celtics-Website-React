@@ -1,0 +1,20 @@
+{
+  "name": "weird-celtics-api",
+  "version": "1.0.0",
+  "description": "Storage of dank Smarf content",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "REST-API"
+  ],
+  "author": "David J McGarvey",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "sequelize": "^5.21.5"
+  }
+}
