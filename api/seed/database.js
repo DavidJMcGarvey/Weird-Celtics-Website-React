@@ -49,13 +49,12 @@ class Database {
         INSERT INTO SmarfGems
           (userId, title, description, gem, createdAt, updatedAt)
         VALUES
-          (?, ?, ?, ?, ?, datetime('now'), datetime('now'));
+          (?, ?, ?, ?, datetime('now'), datetime('now'));
       `,
       smarfGem.userId,
       smarfGem.title,
       smarfGem.description,
-      smarfGem.estimatedTime,
-      smarfGem.materialsNeeded);
+      smarfGem.gem);
   }
 
   async hashUserPasswords(users) {
@@ -140,7 +139,7 @@ class Database {
 
     this.log('Creating the smarfgem records...');
 
-    await this.createSmarfGems(this.smarf);
+    await this.createSmarfGems(this.smarfGems);
 
     this.log('Database successfully initialized!');
   }

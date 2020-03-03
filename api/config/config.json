@@ -1,7 +1,7 @@
 {
   "development": {
     "dialect": "sqlite",
-    "storage": "smarfgems"
+    "storage": "smarfgems.db"
   },
   "test": {
     "username": "root",

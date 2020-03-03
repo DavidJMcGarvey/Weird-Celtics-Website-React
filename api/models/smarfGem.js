@@ -33,4 +33,6 @@ module.exports = (sequelize) => {
       type: Sequelize.BLOB
     }
   }, {sequelize});
-}
+
+  return SmarfGem;
+};

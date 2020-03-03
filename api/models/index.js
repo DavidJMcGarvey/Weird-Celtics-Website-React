@@ -21,7 +21,15 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(file => {
-    const model = sequelize['import'](path.join(__dirname, file));
+    const model = sequelize.import(path.join(__dirname, file));
+    console.log(sequelize);
+    // console.log("model " + model)
+    // try {
+    //   db[model.name] = model
+    //   console.log("working")
+    // }catch(err){
+    //   console.error(err)
+    // }
     db[model.name] = model;
   });
 
