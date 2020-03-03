@@ -29,7 +29,7 @@ module.exports = (sequelize) => {
         } 
       }
     },
-    image: {
+    gem: {
       type: Sequelize.BLOB
     }
   }, {sequelize});

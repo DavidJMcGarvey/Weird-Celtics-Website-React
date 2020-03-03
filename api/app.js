@@ -6,7 +6,7 @@ const express = require('express');
 const morgan = require('morgan');
 const index = require('./routes/index');
 const users = require('./routes/users');
-const courses = require('./routes/courses');
+const smarfGems = require('./routes/smarfGems');
 const bodyParser = require('body-parser');
 const { sequelize } = require('./models');
 
@@ -29,7 +29,7 @@ app.use(morgan('dev'));
 // Add routes
 app.use('/', index)
 app.use('/api', users);
-app.use('/api', courses);
+app.use('/api', smarfGems);
 
 // IIFE to confirm connection to database
 (async () => {

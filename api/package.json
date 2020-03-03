@@ -4,6 +4,8 @@
   "description": "Storage of dank Smarf content",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon ./app.js",
+    "seed": "cross-env DB_ENABLE_LOGGING=true node './seed'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
