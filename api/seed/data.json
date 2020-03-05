@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "username": "Jeanie",
+      "emailAddress": "jeanie@grey.com",
+      "password": "jeaniepassword"
+    },
+    {
+      "username": "Sally",
+      "emailAddress": "sally@jones.com",
+      "password": "sallypassword"
+    }
+  ],
+  "smarfGems": [
+    {
+      "userId": 1,
+      "title": "Marcus Smart by Smarfwater",
+      "description": "The one who is loved and trusted",
+      "gem": ""
+    },
+    {
+      "userId": 1,
+      "title": "Jaylen Brown by Smarfwater",
+      "description": "The one who is unfinished",
+      "gem": ""
+    },
+    {
+      "userId": 1,
+      "title": "Jayson Tatum by Smarfwater",
+      "description": "The one who is special",
+      "gem": ""
+    }
+  ]
+}

@@ -36,7 +36,7 @@ class Database {
         INSERT INTO Users
           (username, emailAddress, password, createdAt, updatedAt)
         VALUES
-          (?, ?, ?, ?, datetime('now'), datetime('now'));
+          (?, ?, ?, datetime('now'), datetime('now'));
       `,
       user.username,
       user.emailAddress,
