@@ -7,7 +7,7 @@ const auth = require('basic-auth');
 const { check, validationResult } = require('express-validator');
 
 // Import sequelize model
-const SmarfGem = require('../models').smarfGem;
+const SmarfGem = require('../models').SmarfGem;
 const User = require('../models').User;
 
 // Handler function to wrap each route.
@@ -71,19 +71,20 @@ const smarfChecker = [
 // GET /api/courses 200 - smarfGem listing route
 router.get('/smarf-gems', asyncHandler( async(req, res) => {
   const smarfGems = await SmarfGem.findAll({
-    attributes: ['id', 'userId', 'title', 'description', 'estimatedTime', 'materialsNeeded'],
+    attributes: ['id', 'userId', 'title', 'description', 'gem'],
     include: {
       model: User,
       as: 'author',
       attributes: ['id', 'username', 'emailAddress'],
     }
   });
+  console.log(smarfGems);
   res.json({
     smarfGems
   });
 }));
 
-// GET /api/courses/:id 200 - particular smarfGem AND user who created it route
+// GET /api/smarfGem/:id 200 - particular smarfGem AND user who created it route
 router.get('/smarf-gems/:id', asyncHandler( async(req, res) => {
   const smarfGems = await SmarfGem.findByPk(
     req.params.id,
@@ -101,7 +102,7 @@ router.get('/smarf-gems/:id', asyncHandler( async(req, res) => {
     });
 }));
 
-// POST /api/courses/:id 201 - create a smarfGem route
+// POST /api/smarfGem/:id 201 - create a smarfGem route
 router.post('/smarf-gems', smarfChecker, authenticateUser, asyncHandler( async(req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -114,7 +115,7 @@ router.post('/smarf-gems', smarfChecker, authenticateUser, asyncHandler( async(r
 
 }));
 
-// PUT /api/courses/:id 204 - update a smarfGem route
+// PUT /api/smarfGem/:id 204 - update a smarfGem route
 router.put('/smarf-gems/:id', smarfChecker, authenticateUser, asyncHandler( async(req, res) => {
   let smarfGem = await SmarfGem.findByPk(req.params.id);
   if (smarfGem) {
@@ -142,7 +143,7 @@ router.put('/smarf-gems/:id', smarfChecker, authenticateUser, asyncHandler( asyn
 
 }));
 
-// DELETE /api/courses/:id 204 - delete a smarfGem route
+// DELETE /api/smarfGem/:id 204 - delete a smarfGem route
 router.delete('/smarf-gems/:id', authenticateUser, asyncHandler( async(req, res) => {
   let smarfGem = await SmarfGem.findByPk(req.params.id);
 

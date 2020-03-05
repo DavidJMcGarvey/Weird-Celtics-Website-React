@@ -47,5 +47,16 @@ module.exports = (sequelize) => {
     }
   }, {sequelize});
 
+  User.associate = (models) => {
+    // Add (One to Many) association to SmarfGem model
+    User.hasMany(models.SmarfGem, {
+      as: 'author',
+      foreignKey: {
+        fieldName: 'userId',
+        allowNull: false
+      },
+    });
+  };
+
   return User;
 };

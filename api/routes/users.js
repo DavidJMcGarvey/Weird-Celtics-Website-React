@@ -60,12 +60,9 @@ const authenticateUser = asyncHandler( async (req, res, next) => {
 });
 
 const userChecker = [
-  check('firstName')
+  check('username')
     .exists({ checkNull: true, checkFalsy: true })
-    .withMessage('Please provide a value for "firstName"'),
-  check('lastName')
-    .exists({ checkNull: true, checkFalsy: true })
-    .withMessage('Please provide a value for "lastName"'),
+    .withMessage('Please provide a value for "username"'),
   check('emailAddress')
     .exists({ checkNull: true, checkFalsy: true})
     .withMessage('Please provide a value for "emailAddress"'),
@@ -120,8 +117,7 @@ router.put('/users/:id', authenticateUser, asyncHandler( async(req, res) => {
   let user = await User.findByPk(req.params.id);
 
   if (user) {
-    user.firstName = req.body.firstName;
-    user.lastName = req.body.lastName;
+    user.username = req.body.username;
     user.emailAddress = req.body.emailAddress;
     user.password = req.body.password;
     

@@ -30,9 +30,25 @@ module.exports = (sequelize) => {
       }
     },
     gem: {
-      type: Sequelize.BLOB
+      type: Sequelize.BLOB,
+      validate: {
+        notEmpty: {
+          msg: '"Rad meme" is required'
+        } 
+      }
     }
   }, {sequelize});
+
+  SmarfGem.associate = (models) => {
+    // Add (Many to One) association to User model
+    SmarfGem.belongsTo(models.User, {
+      as: 'author',
+      foreignKey: {
+        fieldName: 'userId',
+        allowNull: false
+      },
+    });
+  };
 
   return SmarfGem;
 };
