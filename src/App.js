@@ -24,7 +24,7 @@ import withContext from './Context';
 
 // Add context to components
 const HeaderWithContext = withContext(Header);
-const HomeWithContext = withContext(Home);
+// const HomeWithContext = withContext(Home);
 
 const UserSignInWithContext = withContext(UserSignIn);
 const UserSignUpwithContext = withContext(UserSignUp);
@@ -32,14 +32,14 @@ const UserSignOutWithContext = withContext(UserSignOut);
 
 
 export default class App extends Component {
-
   render() {
     return (
       // Route handling
       <Router>
+        <div>
         <HeaderWithContext />
         <Switch>
-          <Route exact path="/" component={HomeWithContext} />
+          {/* <Route exact path="/" component={HomeWithContext} /> */}
           {/* <Route path="/smarf-gems" component={SmarfGems} />
           <Route path="/smarf-gems/:id" component={SmarfGemDetail} />
           <Route path="/twitter-talent" component={TwitterTalent} />
@@ -52,6 +52,7 @@ export default class App extends Component {
           <Route path="/notfound" component={NotFound} />
           <Route component={NotFound} />
         </Switch>
+        </div>
       </Router>
     )
 
