@@ -5,12 +5,12 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import './style/App.css';
+import './styles/App.css';
 
 // Import components
 import Header from './components/Header';
-import Home from './components/Home';
-// import SmarfGems from './components/SmarfGems';
+// import Home from './components/Home';
+import SmarfGems from './components/SmarfGems';
 // import SmarfGemDetail from './components/SmarfGemDetail';
 // import TwitterTalent from './components/TwitterTalent';
 // import TwitterTalentDetail from './components/TwitterTalentDetial';
@@ -40,8 +40,8 @@ export default class App extends Component {
         <HeaderWithContext />
         <Switch>
           {/* <Route exact path="/" component={HomeWithContext} /> */}
-          {/* <Route path="/smarf-gems" component={SmarfGems} />
-          <Route path="/smarf-gems/:id" component={SmarfGemDetail} />
+          <Route path="/smarf-gems" component={SmarfGems} />
+          {/* <Route path="/smarf-gems/:id" component={SmarfGemDetail} />
           <Route path="/twitter-talent" component={TwitterTalent} />
           <Route path="/twitter-talent/:id" component={TwitterTalentDetail} /> */}
           <Route path="/signin" component={UserSignInWithContext} />
