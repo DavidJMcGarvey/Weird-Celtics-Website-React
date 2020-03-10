@@ -86,7 +86,7 @@ router.get('/smarf-gems', asyncHandler( async(req, res) => {
 
 // GET /api/smarfGem/:id 200 - particular smarfGem AND user who created it route
 router.get('/smarf-gems/:id', asyncHandler( async(req, res) => {
-  const smarfGems = await SmarfGem.findByPk(
+  const smarfGem = await SmarfGem.findByPk(
     req.params.id,
     { 
       attributes: ['id', 'userId', 'title', 'description', 'gem'],
@@ -98,7 +98,7 @@ router.get('/smarf-gems/:id', asyncHandler( async(req, res) => {
     }
     );
     res.json({
-      smarfGems
+      smarfGem
     });
 }));
 
