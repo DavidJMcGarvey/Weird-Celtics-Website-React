@@ -75,11 +75,12 @@ export default class SmarfGemDetail extends Component {
               
             </div>
           </div>
-          <div className="grid-25 grid-right">
+          {/* <div className="grid-25 grid-right"> */}
             <div className="course--stats">
+              {/* render image from base64 */}
               <img alt="Smarf Gem" src={`data:image/jpeg;base64, ${smarfBase64}`}></img>
             </div>
-          </div>
+          {/* </div> */}
         </div>
       </div>
     )
