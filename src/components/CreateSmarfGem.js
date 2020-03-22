@@ -1,23 +1,38 @@
 import React, { Component } from 'react';
 import Form from './Form';
+import ImageUploader from 'react-images-upload';
 
 // Create course component 
 export default class CreateSmarfGem extends Component {
+  constructor() {
+    super();
+    this.onDrop = this.onDrop.bind(this); 
+  }
+  
   state = {
-    userId: this.props.context.authenticatedUser.id,
+    // userId: this.props.context.authenticatedUser.id,
     title: '',
     description: '',
-    gem: '',
+    gems: [],
     errors: [],
+  }
+
+  onDrop(gem) {
+    this.setState({
+      gems: this.state.gems.concat(gem),
+    });
   }
   
   render() {
+    
     const {
       title,
       description,
-      gem,
+      gems,
       errors
     } = this.state;
+
+    console.log(this.state.gems);
 
     const { context } = this.props;
     const authUser = context.authenticatedUser;
@@ -59,14 +74,22 @@ export default class CreateSmarfGem extends Component {
                     <ul className="course--stats--list">
                       <li className="course--stats--list--item">
                         <h4>Smarf Gem</h4>
-                        <div><input 
+                        <ImageUploader
+                          id={gems}
+                          withIcon={true}
+                          buttonText='Choose images'
+                          onChange={this.onDrop}
+                          imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                          maxFileSize={5242880}
+                        />
+                        {/* <div><input 
                           id="gem" 
                           name="gem"
                           type="blob"
                           value={gem} 
                           onChange={this.change}
                           className="course--time--input" 
-                          placeholder="Smarf Gem..." /></div>
+                          placeholder="Smarf Gem..." /></div> */}
                       </li>
                     </ul>
                   </div>
@@ -97,21 +120,19 @@ export default class CreateSmarfGem extends Component {
       userId,
       title,
       description,
-      estimatedTime,
-      materialsNeeded
+      gem
     } = this.state;
 
     const emailAddress = context.authenticatedUser.emailAddress;
     const password = context.authenticatedUser.password;
-    const course = {
+    const smarfGem = {
       userId,
       title,
       description,
-      estimatedTime,
-      materialsNeeded
+      gem
     };
 
-    context.data.createCourse(course, emailAddress, password)
+    context.data.createSmarfGem(smarfGem, emailAddress, password)
       .then( errors => {
         if (errors.length) {
           this.setState({ errors });
@@ -119,7 +140,7 @@ export default class CreateSmarfGem extends Component {
           context.actions.signIn(emailAddress, password)
             .then(() => {
               this.props.history.push(from);
-              console.log(`SUCCESS! Course: "${title}" now exists!`);
+              console.log(`SUCCESS! Smarf Gem: "${title}" now exists!`);
             });
         }
       })

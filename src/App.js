@@ -12,6 +12,7 @@ import Header from './components/Header';
 // import Home from './components/Home';
 import SmarfGems from './components/SmarfGems';
 import SmarfGemDetail from './components/SmarfGemDetail';
+import CreateSmarfGem from './components/CreateSmarfGem'
 // import TwitterTalent from './components/TwitterTalent';
 // import TwitterTalentDetail from './components/TwitterTalentDetial';
 import UserSignIn from './components/UserSignIn';
@@ -27,6 +28,7 @@ const HeaderWithContext = withContext(Header);
 // const HomeWithContext = withContext(Home);
 const SmarfGemsWithContext = withContext(SmarfGems);
 const SmarfGemDetailWithContext = withContext(SmarfGemDetail);
+const CreateSmarfGemWithContext = withContext(CreateSmarfGem);
 
 const UserSignInWithContext = withContext(UserSignIn);
 const UserSignUpwithContext = withContext(UserSignUp);
@@ -43,7 +45,9 @@ export default class App extends Component {
         <Switch>
           <Route exact path="/" component={SmarfGemsWithContext} />
           <Route exact path="/smarf-gems" component={SmarfGemsWithContext} />
+          <Route path="/smarf-gems/create" component={CreateSmarfGemWithContext} />
           <Route path="/smarf-gems/:id" component={SmarfGemDetailWithContext} />
+          
           {/* <Route path="/twitter-talent" component={TwitterTalent} /> */}
           {/* <Route path="/twitter-talent/:id" component={TwitterTalentDetail} /> */}
           <Route path="/signin" component={UserSignInWithContext} />

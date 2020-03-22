@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
-import Img from 'react-image';
-const base64Img = require('base64-img');  
 
 // Detail page component
 export default class SmarfGemDetail extends Component {
@@ -19,7 +17,7 @@ export default class SmarfGemDetail extends Component {
     const id = this.props.match.params.id;
     axios.get(`http://localhost:5000/api/smarf-gems/${id}`)
       .then(response => {
-        if (response.data.course === null) {
+        if (response.data.smarfGem === null) {
           this.props.history.push('/notfound');
         } else {
           this.setState({
@@ -37,7 +35,8 @@ export default class SmarfGemDetail extends Component {
   render() {
     const smarfGem = this.state.smarfGem;
     const smarfBase64 = this.state.smarfGem.gem;
-    const author = this.state.owner;
+    const testSmarf = `data:image/jpeg;base64, ${smarfBase64}`
+    const author = smarfGem.author;
     const id = this.state.smarfGem.id;
     const { context } = this.props;
     const authUser = context.authenticatedUser;
@@ -64,9 +63,9 @@ export default class SmarfGemDetail extends Component {
       <div className="bounds course--detail">
           <div className="grid-66">
             <div className="course--header">
-              <h4 className="course--label">Course</h4>
+              <h4 className="course--label">Smarf Gem</h4>
       <h3 className="course--title">{smarfGem.title}</h3>
-              <p>By {author.firstName} {author.lastName}</p>
+              {/* <p>By {author.username}</p> */}
             </div>
             <div className="course--description">
             <ReactMarkdown 
@@ -77,8 +76,18 @@ export default class SmarfGemDetail extends Component {
           </div>
           {/* <div className="grid-25 grid-right"> */}
             <div className="course--stats">
-              {/* render image from base64 */}
-              <img alt="Smarf Gem" src={`data:image/jpeg;base64, ${smarfBase64}`}></img>
+              
+              { testSmarf ?
+                <React.Fragment>
+                  {/* render image from base64 */}
+                  <img alt="Smarf Gem" src={testSmarf}></img>
+                </React.Fragment>
+              :
+                <React.Fragment>
+                  <img alt="Smarf Gem" src=""></img>
+                </React.Fragment>
+              }
+              
             </div>
           {/* </div> */}
         </div>
@@ -98,7 +107,7 @@ export default class SmarfGemDetail extends Component {
       .then( response => {
         if (response.status === 204) {
           this.props.history.push(from);
-          console.log(`SUCCESS! That course just exploded!`);
+          console.log(`SUCCESS! That Smarf Gem just exploded!`);
         } else if (response.status === 403) {
           this.props.history.push('/forbidden');
           console.log(`WHOA! You are not allow to do that!`);

@@ -78,7 +78,6 @@ router.get('/smarf-gems', asyncHandler( async(req, res) => {
       attributes: ['id', 'username', 'emailAddress'],
     }
   });
-  console.log(smarfGems);
   res.json({
     smarfGems
   });
