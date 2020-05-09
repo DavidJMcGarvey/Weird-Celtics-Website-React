@@ -47,7 +47,7 @@ export default class App extends Component {
           <Route exact path="/smarf-gems" component={SmarfGemsWithContext} />
           <Route path="/smarf-gems/create" component={CreateSmarfGemWithContext} />
           <Route path="/smarf-gems/:id" component={SmarfGemDetailWithContext} />
-          
+
           {/* <Route path="/twitter-talent" component={TwitterTalent} /> */}
           {/* <Route path="/twitter-talent/:id" component={TwitterTalentDetail} /> */}
           <Route path="/signin" component={UserSignInWithContext} />
