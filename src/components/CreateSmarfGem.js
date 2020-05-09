@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import Form from './Form';
 import ImageUploader from 'react-images-upload';
 
-// Create course component 
+// Create course component
 export default class CreateSmarfGem extends Component {
   constructor() {
     super();
-    this.onDrop = this.onDrop.bind(this); 
+    // this.state = { gems: [] };
+    this.onDrop = this.onDrop.bind(this);
   }
-  
+
   state = {
     // userId: this.props.context.authenticatedUser.id,
     title: '',
-    description: '',
     gems: [],
     errors: [],
   }
@@ -21,13 +21,13 @@ export default class CreateSmarfGem extends Component {
     this.setState({
       gems: this.state.gems.concat(gem),
     });
+    // console.log(this.state.gems);
   }
-  
+
   render() {
-    
+
     const {
       title,
-      description,
       gems,
       errors
     } = this.state;
@@ -45,29 +45,24 @@ export default class CreateSmarfGem extends Component {
             cancel={this.cancel}
             errors={errors}
             submit={this.submit}
-            submitButtonText="Create Course"
+            submitButtonText="Add to Collection"
             elements={() => (
               <React.Fragment>
                 <div className="grid-66">
                   <div className="course--header">
                   <h4 className="course--label">Smarf Gem</h4>
-                  <div><input 
-                    id="title" 
-                    name="title" 
+                  <p>By {authUser.username}</p>
+                  <div><input
+                    id="title"
+                    name="title"
                     type="text"
-                    value={title} 
+                    value={title}
                     onChange={this.change}
                     className="input-title course--title--input"
-                    placeholder="Course Title..." /></div>
+                    placeholder="What do you call this gem?" /></div>
                     </div>
-                    <p>By {authUser.username}</p>
-                  <div><textarea 
-                    id="description" 
-                    name="description"
-                    type="textarea"
-                    value={description} 
-                    onChange={this.change} 
-                    placeholder="Course Description..." /></div>
+
+
                 </div>
                 <div className="grid-25 grid-right">
                   <div className="course--stats">
@@ -77,18 +72,18 @@ export default class CreateSmarfGem extends Component {
                         <ImageUploader
                           id={gems}
                           withIcon={true}
-                          buttonText='Choose images'
+                          buttonText='Choose gem'
                           onChange={this.onDrop}
                           imgExtension={['.jpg', '.gif', '.png', '.gif']}
                           maxFileSize={5242880}
                         />
-                        {/* <div><input 
-                          id="gem" 
+                        {/* <div><input
+                          id="gem"
                           name="gem"
                           type="blob"
-                          value={gem} 
+                          value={gem}
                           onChange={this.change}
-                          className="course--time--input" 
+                          className="course--time--input"
                           placeholder="Smarf Gem..." /></div> */}
                       </li>
                     </ul>

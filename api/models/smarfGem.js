@@ -18,15 +18,7 @@ module.exports = (sequelize) => {
       validate: {
         notEmpty: {
           msg: '"Title" is required'
-        } 
-      }
-    },
-    description: {
-      type: Sequelize.TEXT,
-      validate: {
-        notEmpty: {
-          msg: '"Description" is required'
-        } 
+        }
       }
     },
     gem: {
@@ -34,7 +26,7 @@ module.exports = (sequelize) => {
       validate: {
         notEmpty: {
           msg: '"Rad meme" is required'
-        } 
+        }
       }
     }
   }, {sequelize});
