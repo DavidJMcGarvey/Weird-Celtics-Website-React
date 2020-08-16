@@ -16,10 +16,11 @@ module.exports = (sequelize) => {
         notEmpty: {
           msg: '"Username" is required'
         },
-        unique: {
-          args: true,
-          msg: 'Username already exists! Try another one :)'
-        }
+        // This caused a create user error !
+        // unique: {
+        //   args: true,
+        //   msg: 'Username already exists! Try another one :)'
+        // }
       }
     },
     emailAddress: {
@@ -42,7 +43,7 @@ module.exports = (sequelize) => {
       validate: {
         notEmpty: {
           msg: '"Password" is required'
-        } 
+        }
       }
     }
   }, {sequelize});

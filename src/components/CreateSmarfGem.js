@@ -140,6 +140,7 @@ export default class CreateSmarfGem extends Component {
         }
       })
       .catch( err => {
+        console.log("Bummer but it happened HERE!")
         console.log(err);
         this.props.history.push('/error');
       })
